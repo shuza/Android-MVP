@@ -51,4 +51,10 @@ dependencies {
     provided 'javax.annotation:jsr250-api:1.0'
     implementation 'com.google.code.gson:gson:2.7'
     implementation "com.squareup.retrofit2:adapter-rxjava2:$retrofit_version"
+
+    //  dialog library
+    implementation 'com.github.d-max:spots-dialog:0.7@aar'
+
+    // transaction animation library
+    implementation 'com.andkulikov:transitionseverywhere:1.7.8'
 }

@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">Android-MVP</string>
+
+    <string name="loading">Loading...</string>
 </resources>
