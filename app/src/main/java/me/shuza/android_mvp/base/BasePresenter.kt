@@ -1,5 +1,7 @@
 package me.shuza.android_mvp.base
 
+import java.lang.ref.WeakReference
+
 /**
  *
  * :=  created by:  Shuza
@@ -11,9 +13,10 @@ package me.shuza.android_mvp.base
  *
  **/
 open class BasePresenter<V : BaseMvpView> : BaseMvpPresenter<V> {
-    var mvpView: V? = null
+    var mvpView: WeakReference<V>? = null
+
     override fun attachView(mvpView: V) {
-        this.mvpView = mvpView
+        this.mvpView = WeakReference(mvpView)
     }
 
     override fun detachView() {

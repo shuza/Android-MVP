@@ -1,6 +1,8 @@
 package me.shuza.android_mvp.networkIO
 
-import io.reactivex.Observable
+
+import io.reactivex.Maybe
+import io.reactivex.Single
 import me.shuza.android_mvp.models.StudentModel
 import retrofit2.http.GET
 
@@ -17,5 +19,5 @@ import retrofit2.http.GET
 interface ApiService {
 
     @GET("5ab40b852f00006600ca3a70")
-    fun getDataList(): Observable<List<StudentModel>>
+    fun getDataList(): Maybe<List<StudentModel>>
 }
