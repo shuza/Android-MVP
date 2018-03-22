@@ -7,6 +7,10 @@ import android.os.Bundle
 import android.support.v4.app.Fragment
 import dmax.dialog.SpotsDialog
 import me.shuza.android_mvp.R
+import me.shuza.android_mvp.injection.components.DaggerFragmentComponent
+import me.shuza.android_mvp.injection.components.FragmentComponent
+import me.shuza.android_mvp.injection.modules.FragmentModule
+import me.shuza.android_mvp.injection.modules.NetworkModule
 import org.jetbrains.anko.support.v4.toast
 import kotlin.properties.Delegates
 
@@ -21,7 +25,15 @@ import kotlin.properties.Delegates
  *
  **/
 open class BaseFragment : Fragment(), BaseMvpView {
+
     var dialog: AlertDialog by Delegates.notNull()
+    val fragmentComponent: FragmentComponent by lazy {
+        DaggerFragmentComponent.builder()
+                .fragmentModule(FragmentModule(this))
+                .networkModule(NetworkModule())
+                .activityComponent((activity as BaseActivity).activityComponent)
+                .build()
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

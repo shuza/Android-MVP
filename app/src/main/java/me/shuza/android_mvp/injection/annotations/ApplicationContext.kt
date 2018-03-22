@@ -1,4 +1,4 @@
-package me.shuza.android_mvp.annotations
+package me.shuza.android_mvp.injection.annotations
 
 import java.lang.annotation.Retention
 import java.lang.annotation.RetentionPolicy

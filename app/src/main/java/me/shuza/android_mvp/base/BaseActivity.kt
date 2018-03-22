@@ -9,6 +9,10 @@ import android.os.PersistableBundle
 import android.support.v7.app.AppCompatActivity
 import dmax.dialog.SpotsDialog
 import me.shuza.android_mvp.R
+import me.shuza.android_mvp.injection.components.ActivityComponent
+import me.shuza.android_mvp.injection.components.DaggerActivityComponent
+import me.shuza.android_mvp.injection.modules.ActivityModule
+import me.shuza.android_mvp.injection.modules.NetworkModule
 import org.jetbrains.anko.toast
 import kotlin.properties.Delegates
 
@@ -24,9 +28,16 @@ import kotlin.properties.Delegates
  **/
 open class BaseActivity : AppCompatActivity(), BaseMvpView {
     var dialog: AlertDialog by Delegates.notNull()
+    val activityComponent: ActivityComponent by lazy {
+        DaggerActivityComponent.builder()
+                .activityModule(ActivityModule(this))
+                .applicationComponent(BaseApplication.get(this).component)
+                .networkModule(NetworkModule())
+                .build()
+    }
 
-    override fun onCreate(savedInstanceState: Bundle?, persistentState: PersistableBundle?) {
-        super.onCreate(savedInstanceState, persistentState)
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
         dialog = SpotsDialog(this, R.style.LoadingDialog)
         dialog.setCancelable(false)
     }

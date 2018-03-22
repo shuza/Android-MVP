@@ -1,8 +1,8 @@
-package me.shuza.android_mvp.annotations
+package me.shuza.android_mvp.injection.annotations
 
 import java.lang.annotation.Retention
 import java.lang.annotation.RetentionPolicy
-import javax.inject.Scope
+import javax.inject.Qualifier
 
 /**
  *
@@ -15,6 +15,6 @@ import javax.inject.Scope
  *
  **/
 
-@Scope
+@Qualifier
 @Retention(RetentionPolicy.RUNTIME)
-annotation class PerFragment
+annotation class ActivityContext
